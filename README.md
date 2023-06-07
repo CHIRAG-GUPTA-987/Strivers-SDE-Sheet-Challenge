@@ -3,5 +3,7 @@ This GitHub repository is dedicated to the Striver's SDE Sheet Challenge, a 2-mo
 
 # Challenge Details
 Duration: 2 months
+
 Questions: 184 selected questions
+
 Daily Commitment: 3-4 questions on Coding Ninjas
