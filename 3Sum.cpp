@@ -12,8 +12,7 @@ vector<vector<int>> findTriplets(vector<int> arr, int n, int K)
             int sum = arr[i] + arr[j] + arr[k];
             if (sum == K)
             {
-                vector<int> curr = {arr[i], arr[j], arr[k]};
-                ans.push_back(curr);
+                ans.push_back(vector<int>({arr[i], arr[j], arr[k]}));
                 j++, k--;
                 while (j < k && arr[j] == arr.at(j - 1))
                     j++;
