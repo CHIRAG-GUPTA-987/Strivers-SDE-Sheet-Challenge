@@ -1,25 +1,26 @@
 #include <bits/stdc++.h>
-void getSet(int n, vector<int> &arr, set<vector<int>> &s, vector<int> &temp)
+void generateSets(int i, const int &n, const vector<int> &arr, vector<vector<int>> &ans, vector<int> ds)
 {
-    if (n == -1)
-    {
-        s.insert(temp);
+    if (i == n)
         return;
+    for (int j = i; j < n; j++)
+    {
+        while (j != n && j != i && arr[j] == arr[j - 1])
+            j++;
+        if (j == n)
+            return;
+        ds.push_back(arr[j]);
+        ans.push_back(ds);
+        generateSets(j + 1, n, arr, ans, ds);
+        ds.pop_back();
     }
-    getSet(n - 1, arr, s, temp);
-    temp.push_back(arr[n]);
-    getSet(n - 1, arr, s, temp);
-    temp.pop_back();
 }
 vector<vector<int>> uniqueSubsets(int n, vector<int> &arr)
 {
     vector<vector<int>> ans;
-    sort(arr.begin(), arr.end(), greater<int>());
-    set<vector<int>> s;
-    vector<int> temp;
-    getSet(n - 1, arr, s, temp);
-    for (auto itr : s)
-        ans.push_back(itr);
+    ans.push_back(vector<int>());
+    sort(arr.begin(), arr.end());
+    generateSets(0, n, arr, ans, vector<int>());
     return ans;
     // Write your code here.
 }
